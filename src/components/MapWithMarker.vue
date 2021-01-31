@@ -26,6 +26,10 @@ export default {
     mapboxStyle: {
       type: String,
       default: () => "mapbox://styles/mapbox/streets-v11"
+    },
+    mapboxPromise: {
+      type: Function,
+      required: true,
     }
   },
   data: () => {
@@ -51,7 +55,7 @@ export default {
   methods: {
     async loadMapbox() {
       if (!mapboxglCache) this.loading = true;
-      const mapboxgl = mapboxglCache ? mapboxglCache : await import('mapbox-gl');
+      const mapboxgl = mapboxglCache ? mapboxglCache : await this.mapboxPromise();
       mapboxglCache = mapboxgl;
 
       this.loading = false;

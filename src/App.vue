@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sk-map-with-marker class="map" :access-token="accessToken" :markers="markers"></sk-map-with-marker>
+    <sk-map-with-marker class="map" :access-token="accessToken" :markers="markers" :mapbox-promise="mapboxPromise"></sk-map-with-marker>
   </div>
 </template>
 
@@ -20,7 +20,8 @@ export default {
         title: "Test 2"
       }
     ],
-    accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN
+    accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
+    mapboxPromise: () => import('mapbox-gl')
   }),
   components: {
     SkMapWithMarker
