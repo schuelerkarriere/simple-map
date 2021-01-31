@@ -1,24 +1,27 @@
-# sk-map
+# @schuelerkarriere/simple-map
 
-## Project setup
-```
-yarn install
-```
+A simple to use [mapbox](https://www.mapbox.com/) wrapper written for [schuelerkarriere.de](https://schuelerkarriere.de).
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Map with Markers
 
-### Compiles and minifies for production
-```
-yarn build
-```
+```vue
+<template>
+  <sk-map-with-marker access-token="token" :markers="markers"></sk-map-with-marker>
+</template>
 
-### Lints and fixes files
-```
-yarn lint
-```
+<script>
+import { SkMapWithMarker } from '@schuelerkarriere/simple-map';
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+export default {
+  components: { SkMapWithMarker },
+  data: () => ({
+    markers: [
+      {           // [Longitude, Latitude]
+        coordinates: [9.735603, 52.373920],
+        title: "Hannover" // Optional
+      },
+    ]
+  })
+}
+</script>
+```

@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <sk-map-with-marker class="map" :access-token="accessToken" :markers="markers"></sk-map-with-marker>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import SkMapWithMarker from "@/components/MapWithMarker";
 export default {
   name: 'App',
+  data: () => ({
+    markers: [
+      {
+        coordinates: [9.555210, 52.323471],
+        title: "Test"
+      },
+      {
+        coordinates: [9.746700, 52.361138],
+        title: "Test 2"
+      }
+    ],
+    accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN
+  }),
   components: {
-    HelloWorld
+    SkMapWithMarker
+  },
+  mounted() {
+    setTimeout(() => {
+      console.log('Shift');
+      this.markers.shift();
+      this.markers.shift();
+    }, 2000);
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+.map {
+  min-height: 500px;
 }
 </style>
