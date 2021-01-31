@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ [`${uuid}`]: true }" >
+  <div :class="{ [`${uuid}`]: true }" ref="mapbox">
     <div v-if="loading">
       <slot name="loading">
         <p>Loading</p>
@@ -60,10 +60,8 @@ export default {
 
       this.loading = false;
 
-      const container = document.querySelector(`.${this.uuid}`);
-
       const map = new mapboxgl.Map({
-        container,
+        container: this.$refs['mapbox'],
         style: this.mapboxStyle,
         accessToken: this.accessToken
       });
