@@ -7,6 +7,10 @@
     "build": "vue-cli-service build --target lib --name sk-map src/library.js",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schuelerkarriere/simple-map"
+  },
   "dependencies": {
     "core-js": "^3.6.5",
     "mapbox-gl": "^2.0.1"
